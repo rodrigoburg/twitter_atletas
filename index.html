@@ -1,0 +1,252 @@
+
+<html lang="pt-br">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+    <title>Twitter dos atletas - Estadão Dados</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index">
+    <meta name="creator" content="Guilherme Duarte">
+    <meta name="creator" content="Rodrigo Burgarelli">
+    <meta name="creator" content="Estadão Dados">
+    <meta name="creator" content="Estadão.com.br">
+    <meta property="og:site_name" content="Estadão Dados">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="Estadão Dados: Twitter dos atletas">
+    <meta property="og:description" content="Quem segue quem entre os 3 mil perfis dos olímpicos da Rio 2016. #estadaodados">
+
+    <meta property="og:image" content="http://estadaodados.com/eles_elegem/imgs/fb.png" />
+    <meta property="og:url" content="http://estadaodados.com/eles_elegem/" />
+
+    <!-- meta tags específicas de cada projeto -->
+    <meta name="author" content="Rodrigo Burgarelli">
+    <!-- A pessoa responsável pelo desenvolvimento deste arquivo -->
+    <meta name="DC.creator " content="Rodrigo Burgarelli">
+    <!-- Desenvolvedor da página -->
+    <meta name="DC.creator.address" content="rodrigo.burgarelli1@gmail.com">
+    <!-- email do autor da página -->
+    <meta name="application-name" content="Eles elegem">
+
+    <!-- Descrição curta e precisa do conteúdo desta página -->
+    <meta name="description" content="Quem segue quem entre os 3 mil perfis dos olímpicos da Rio 2016. #estadaodados">
+
+    <!-- Palavras reletantes relativas ao conteúdo dessa página. Em formato texto e separadas por vírgula. -->
+    <meta name="keywords" content="atletas olimpiada olimpíada olimpíadas rio2016 jogos olímpicos estadão data dados jornalismo">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css.map" rel="stylesheet">
+    <link href="css/bootstrap-theme.css.map" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/estadaodados.css" rel="stylesheet">
+
+    <link href="css/empresas.css" rel="stylesheet">
+
+
+
+
+    <style type="text/css">
+        .multiselect {
+            width: 450px;
+            height: 200px;
+        }
+        #locales {
+            padding-bottom: 16px;
+        }
+        div.debug_uiControls {
+            margin-top: 16px;
+        }
+        div.debug_log {
+            height: 100px;
+            overflow: auto;
+            border: 1px solid black;
+            padding: 8px;
+            margin-top: 16px;
+        }
+        .example-container {
+            overflow: visible;
+            width: 100%;
+        }
+        .links line {
+		  stroke: #999;
+		  stroke-opacity: 0.6;
+		}
+
+		.nodes circle {
+		  stroke: white;
+		  stroke-width: 0.2px;
+		}
+
+
+    </style>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cluetip.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-fixed-top">
+            <div class="container-fluid" id="navbar-edados">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-edados">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img src="http://estadaodados.com/base/imgs/logo_estadao_dados.png" id="logo_estadao_dados" title="Estadão Dados" />
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse navbar-collapse-edados" id="navbar-collapse-edados">
+                    <ul class="nav navbar-nav navbar-edados">
+                        <li class="dropdown active navbar-edados-projetos">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Projetos <b class="caret"></b>
+                        </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabelProjetos">
+                                <!--START_MENU_ITENS-->
+                                <li role="presentation"><a href="/basometro">Basômetro</a>
+                                </li>
+                                <li role="presentation"><a href="/biomas2012">Biomas 2012</a>
+                                </li>
+                                <li role="presentation"><a href="/coligacoes">Coligações</a>
+                                </li>
+                                <li role="presentation"><a href="/cotas">Cotas</a>
+                                </li>
+                                <li role="presentation"><a href="/cruzador">Cruzador de Opiniões</a>
+                                </li>
+                                <li role="presentation"><a href="/eleicoes2012">Eleições 2012</a>
+                                </li>
+                                <li role="presentation"><a href="/ideb">IDEB</a>
+                                </li>
+                                <li role="presentation"><a href="/intencaodevoto">Intenção de Voto</a>
+                                </li>
+                                <li role="presentation"><a href="/perfil_eleitorado">Perfil do Eleitorado</a>
+                                </li>
+                                <li role="presentation"><a href="/piramide_eleitoral">Pirâmide Eleitoral</a>
+                                </li>
+                                <li role="presentation"><a href="/quespvcquer">Que SP vc quer?</a>
+                                </li>
+                                <li role="presentation"><a href="/religiao">Religiões</a>
+                                </li>
+                                <li role="presentation"><a href="/ringue2014">Ringue 2014</a>
+                                </li>
+                                <li role="presentation"><a href="/santamaria">Santa Maria</a>
+                                </li>
+                                <li role="presentation"><a href="/saopauloquebalanca">São Paulo que balança</a>
+                                </li>
+                                <li role="presentation"><a href="/doacoes2014">Siga o dinheiro</a>
+                                </li>
+                                <!--END_MENU_ITENS-->
+                            </ul>
+                        </li>
+                        <li><a href="http://blog.estadaodados.com">Blog</a>
+                        </li>
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            Estadão
+                            <b class="caret"></b>
+                        </a>
+                            <ul class="dropdown-menu" role="menuEstadao" aria-labelledby="dLabelEstadao">
+                                <li><a href="http://politica.estadao.com.br/" target="_top" title="POLÍTICA">Política</a>
+                                </li>
+                                <li><a href="http://economia.estadao.com.br/" target="_top" title="ECONOMIA">Economia</a>
+                                </li>
+                                <li><a href="http://esportes.estadao.com.br/" target="_top" title="ESPORTES">Esportes</a>
+                                </li>
+                                <li><a href="http://blogs.estadao.com.br/link/" target="_top" title="LINK">Link</a>
+                                </li>
+                                <li><a href="http://rta-se.estadao.com.br/" target="_top" title="DIVIRTA-SE">Divirta-se</a>
+                                </li>
+                                <li><a href="http://pme.estadao.com.br/" target="_top" title="PME">PME</a>
+                                </li>
+                                <li><a href="http://www.estadao.com.br/jornal-do-carro" target="_top" title="JORNAL DO CARRO">Jornal do Carro</a>
+                                </li>
+                                <li><a href="http://www.estadao.com.br/opiniao/" target="_top" title="OPINIÃO">Opinião</a>
+                                </li>
+                                <li><a href="http://acervo.estadao.com.br/" target="_top" title="ACERVO">Acervo</a>
+                                </li>
+                                <li><a href="http://radio.estadao.com.br/" target="_top" title="RÁDIO">Rádio</a>
+                                </li>
+                                <li><a href="http://territorioeldorado.limao.com.br" target="_top" title="Eldorado">Eldorado</a>
+                                </li>
+                                <li><a href="http://revistapiaui.estadao.com.br/" target="_top" title="Piauí">Piauí</a>
+                                </li>
+                                <li><a href="http://www.broadcastpolitico.com.br/experimente/" target="_top" title="Broadcast Político">Broadcast Político</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </nav>
+        <!-- Fim da barra de navegação do Estadão Dados -->
+
+        <!-- Cabeçalho -->
+        <div class="container-fluid text-center titulo-header">
+            <div class="col-sm-10 col-xs-12">
+                <h1>A Olimpíada no Twitter</h1>
+                <h4>Veja quem segue quem entre os atletas que vão competir na Rio2016</h4>
+            </div>
+            <div class="col-sm-2 social-sharing visible-sm visible-md visible-lg">
+                <!-- AddThis Button BEGIN -->
+                <div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+
+                    <a class="addthis_button_twitter" addthis:title="A Olimpíada no Twitter - Veja quem segue quem entre os atletas que vão competir na #rio2016 #estadaodados"></a>
+                    <a class="addthis_button_facebook" addthis:title="A Olimpíada no Twitter - Veja quem segue quem entre os atletas que vão competir na #rio2016 #estadaodados"></a>
+
+                </div>
+                <!-- AddThis Button END -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <section id="main_content" class="container-fluid">
+        <div id="container">
+            <div id="grafico"></div>
+        </div>
+
+
+
+    </section>
+    <!--
+    <div id="footer">
+        <p><b>Grupo Estado</b> • Copyright © 2007-2014 • <a href="https://creativecommons.org/licenses/by-sa/3.0/br/">Alguns direitos reservados (CC-By-SA)</a>
+        </p>
+    </div>
+
+    </aside> -->
+
+    <!-- AddThis Button END -->
+
+    <!-- Le javascript
+================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+
+    <script src="js/empresas.js"></script>
+
+
+
+    <!-- AddThis Button BEGIN -->
+    <script type="text/javascript">
+        var addthis_config = {
+            "data_track_addressbar": true
+        };
+    </script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53751e9e65674220"></script>
+    <!-- AddThis Button END -->
+
+    <!-- google analytics -->
+    <script language="javascript" type="text/javascript" src="js/edados_analytics.js"></script>
+
+</body>

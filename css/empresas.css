@@ -1,0 +1,56 @@
+body,
+html,
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+}
+#container {
+  position: relative;
+  width: 100%;
+}
+#grafico {
+  width: 100%;
+  height: 150%;
+  overflow: scroll-y;
+  padding-left: -10px;
+}
+#main_content {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+}
+#empresas {
+  width: 100%;
+  padding-bottom: 10px;
+
+  position: relative;
+  font-size: 80%;
+}
+#footer {
+  position: relative;
+  font-size: 0.8em;
+  color: #666;
+  padding-left: 12px;
+  padding-top: 20px;
+
+}
+div.tooltip {
+  position: absolute;
+  text-align: left;
+  width: auto;
+  height: auto;
+  padding: 6px;
+  margin-left: 35px;
+  font: 14px Arial;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+.selecionada {
+  padding-left:
+}
