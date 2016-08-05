@@ -14,8 +14,8 @@ var empresas = ["JBS"],
   clusters = {};
 
 var raio = d3.scaleLinear()
-    .domain([40,541])
-    .range([4, 50]);
+    .domain([60,800])
+    .range([3, 35]);
 
 var svg = d3.select("#grafico").append("svg")
     .attr("viewBox", "0 0 " + width + " " + height )
@@ -157,8 +157,7 @@ d3.json("dados_grafico.json", function(error, graph) {
     .data(l_esportes)
     .enter().append("g")
       .attr("class", "legend")
-      .attr("transform", function(d, i) { return "translate(-15," + ( i * 20 )+ ")"; })
-      .style("font", "4px");
+      .attr("transform", function(d, i) { return "translate(-15," + (i*20)+ ")"; });
 
   legend.append("rect")
       .attr("x", width - 18)
@@ -174,7 +173,7 @@ d3.json("dados_grafico.json", function(error, graph) {
       .attr('stroke','black')
       .style("font-family", "Helvetica")
       .style("font-weight", "100")
-      .style("font-size", "12px")
+      .style("font-size", "14px")
 
 
       .text(function(d) { return d; });
