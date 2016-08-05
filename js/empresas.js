@@ -15,7 +15,7 @@ var empresas = ["JBS"],
 
 var raio = d3.scaleLinear()
     .domain([40,541])
-    .range([2, 30]);
+    .range([4, 50]);
 
 var svg = d3.select("#grafico").append("svg")
     .attr("viewBox", "0 0 " + width + " " + height )
@@ -173,8 +173,8 @@ d3.json("dados_grafico.json", function(error, graph) {
       .attr("text-anchor", "end")
       .attr('stroke','black')
       .style("font-family", "Helvetica")
-      .style("font-weight", "200")
-      .style("font-size", "10px")
+      .style("font-weight", "100")
+      .style("font-size", "12px")
 
 
       .text(function(d) { return d; });
