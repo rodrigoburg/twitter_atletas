@@ -37,34 +37,47 @@ caixa = svg.append("rect")
 
 var cores = {
   'Atletismo':'#e31a1c',
-  'Badminton':'gray',
-  'Basquete':'#b2df8a',
-  'Boxe':'#cab2d6',
+  'Natação':'#1f78b4',
   'Canoagem':'#1f78b4',
+  'Remo':'#1f78b4',
+  'Vela':'#1f78b4',
+  'Salto ornamental':'#1f78b4',
+  'Polo Aquático':'#1f78b4',
+  'Basquete':'#b2df8a',
   'Ciclismo':'#33a02c',
+  'Triatlo':'#ff7f00',
+  'Pentatlo':'#ff7f00',
+  'Heptatlo':'#ff7f00',
   'Decatlo':'#ff7f00',
+  'Boxe':'#cab2d6',
   'Esgrima':'#cab2d6',
+  'Judô':'#cab2d6',
+  'Luta':'#cab2d6',
+  'Taekwondo':'#cab2d6',
+  'Hóquei':'#FFF0AA',
+  'Vôlei':'#fdbf6f',
+  'Vôlei de praia':'#fdbf6f',
   'Futebol':'#fccde5',
+  'Tênis':'#a6cee3',
+  'Badminton':'gray',
   'Ginástica':'gray',
   'Golfe':'gray',
   'Handebol':'gray',
-  'Heptatlo':'#ff7f00',
-  'Hóquei':'#FFF0AA',
-  'Judô':'#cab2d6',
-  'Luta':'#cab2d6',
-  'Natação':'#1f78b4',
-  'Pentatlo':'#ff7f00',
-  'Polo Aquático':'#1f78b4',
-  'Remo':'#1f78b4',
-  'Rugby':'gray',
-  'Vela':'#1f78b4',
-  'Salto ornamental':'#1f78b4',
-  'Taekwondo':'#cab2d6',
-  'Tênis':'#a6cee3',
-  'Triatlo':'#ff7f00',
-  'Vôlei':'#fdbf6f',
-  'Vôlei de praia':'#fdbf6f'
+  'Rugby':'gray'
 }
+
+var l_esportes = [],
+    l_cores = []
+
+for (esporte in cores) {
+  l_esportes.push(esporte);
+  l_cores.push(cores[esporte]);
+}
+
+var ordinal = d3.scaleOrdinal()
+    .domain(l_esportes)
+    .range(l_cores);
+
 
 var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(function(d) { return d.id; }))
@@ -138,6 +151,33 @@ d3.json("dados_grafico.json", function(error, graph) {
 
   simulation.force("link")
       .links(graph.links);
+
+
+  var legend = svg.selectAll(".legend")
+    .data(l_esportes)
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(-15," + ( i * 20 )+ ")"; })
+      .style("font", "4px");
+
+  legend.append("rect")
+      .attr("x", width - 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .attr("fill", function (d) { return cores[d]});
+
+  legend.append("text")
+      .attr("x", width - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .attr("text-anchor", "end")
+      .attr('stroke','black')
+      .style("font-family", "Helvetica")
+      .style("font-weight", "200")
+      .style("font-size", "10px")
+
+
+      .text(function(d) { return d; });
 
 });
 
