@@ -19,6 +19,7 @@ var raio = d3.scaleLinear()
 
 var svg = d3.select("#grafico").append("svg")
     .attr("viewBox", "0 0 " + width + " " + height )
+   .attr("preserveAspectRatio","xMinYMin meet")
 
 //ZOOM
 //  .append("g")
@@ -145,6 +146,27 @@ d3.json("dados_grafico.json", function(error, graph) {
   node.append("title")
       .text(function(d) { return d.usuario + " - "+d.nome + ' - '+ d.esporte; });
 
+  node.on('mouseover', function(d) {
+    div.transition()
+        .duration(200)
+        .style("opacity", 0.9);
+          div.html("<b>" + d.esporte + " </b></br> " +"<div class='minicontainer'><div><img id='img_twitter' src="+d.imagem+"></div><div class='textim'>" + d.nome + " (@"+d.usuario+")<br/>Número de atletas seguidores: "+d.seguidores_atletas+"</div></div>")
+        div.style("left", (d3.event.pageX - 20) + "px")
+          .style("top", (d3.event.pageY - 50) + "px")
+          .style('background', cores[d.esporte])
+      })
+
+  node.on('mousemove', function(d) {
+      div.style("left", (d3.event.pageX - 20) + "px")
+        .style("top", (d3.event.pageY - 50) + "px");
+  })
+
+  node.on("mouseout", function(d) {
+      div.transition()
+        .duration(500)
+        .style("opacity", 0);
+  });
+
   simulation
       .nodes(graph.nodes)
       .on("tick", ticked);
@@ -157,7 +179,7 @@ d3.json("dados_grafico.json", function(error, graph) {
     .data(l_esportes)
     .enter().append("g")
       .attr("class", "legend")
-      .attr("transform", function(d, i) { return "translate(-15," + (i*20)+ ")"; });
+      .attr("transform", function(d, i) { return "translate(-15," + (i*20 )+ ")"; });
 
   legend.append("rect")
       .attr("x", width - 18)
