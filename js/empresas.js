@@ -14,12 +14,13 @@ var empresas = ["JBS"],
   clusters = {};
 
 var raio = d3.scaleLinear()
-    .domain([60,800])
-    .range([3, 35]);
+    .domain([50,900])
+    .range([3, 60]);
 
 var svg = d3.select("#grafico").append("svg")
-  .attr("width", width)
-  .attr("height", height)
+    .attr("viewBox", "0 0 " + width + " " + height )
+  //.attr("width", width)
+  //.attr("height", height)
 
 
 //ZOOM
@@ -215,16 +216,4 @@ function dragended(d) {
   if (!d3.event.active) simulation.alphaTarget(0);
   d.fx = null;
   d.fy = null;
-}
-
-d3.select(window).on("resize",resize)
-
-function resize() {
-  width = $("#grafico").width() -20,
-  height = $("#grafico").height(),
-
-  svg.attr("viewBox", "0 0 " + width + " " + height )
-  caixa.attr("width", width)
-  .attr("height", height)
-
 }
