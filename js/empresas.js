@@ -18,8 +18,9 @@ var raio = d3.scaleLinear()
     .range([3, 35]);
 
 var svg = d3.select("#grafico").append("svg")
-    .attr("viewBox", "0 0 " + width + " " + height )
-   .attr("preserveAspectRatio","xMinYMin meet")
+  .attr("width", width)
+  .attr("height", height)
+
 
 //ZOOM
 //  .append("g")
@@ -142,9 +143,6 @@ d3.json("dados_grafico.json", function(error, graph) {
           .on("start", dragstarted)
           .on("drag", dragged)
           .on("end", dragended));
-
-  node.append("title")
-      .text(function(d) { return d.usuario + " - "+d.nome + ' - '+ d.esporte; });
 
   node.on('mouseover', function(d) {
     div.transition()
